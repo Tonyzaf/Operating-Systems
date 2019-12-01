@@ -8,5 +8,16 @@ void foo(){
 }
 int main(){
     time_t start = time(NULL);
-    printf("The time is %ld",start);
+    printf("The time is %ld\n",start);
+    int pid;
+    int i = 0;
+    while(i<100){
+        pid = fork();
+        if(pid == 0){
+            foo();
+            printf("%d\n",i);
+            break;
+        }
+    i++;
+    }
 }
