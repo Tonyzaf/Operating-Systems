@@ -9,14 +9,14 @@ void foo(){
 }
 int main(){
     time_t start = time(NULL);
-    printf("The time is %ld\n",start);
+    printf("The start time is %lds\n",start);
     int pid;
     int i = 0;
     while(i<1000){
         pid = fork();
         if(pid == 0){
             foo();
-            break;
+            return 0;
         }
     i++;
     }
@@ -24,7 +24,8 @@ int main(){
         waitpid(0,NULL,WUNTRACED);
     }
     time_t end = time(NULL);
-    double z = (double)end - (double)start;
-    z = z / 1000;
-    printf("Time to end: %f\n",z);
+    time_t z = end - start;
+    //z = z / 1000;
+    printf("The end time is %lds\n",end);
+    printf("Time to end: %lds\n",z);
 }
