@@ -1,0 +1,1 @@
+18 : I am process 260 and I am doing output to the shared_file
